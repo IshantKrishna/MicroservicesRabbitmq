@@ -9,9 +9,9 @@ using MicroservicesRabbitmq.Domain.Core.Events;
 
 namespace MicroservicesRabbitmq.Domain.Core.Bus
 {
-    internal interface IEventBus
+    public interface IEventBus
     {
-        Task SendCommand<T>() where T : Command;
+        Task SendCommand<T>(T command) where T : Command;
 
         void Publish<T>(T @event) where T : Event;
 
