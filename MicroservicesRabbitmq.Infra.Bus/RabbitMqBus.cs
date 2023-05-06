@@ -9,7 +9,7 @@ using RabbitMQ.Client.Events;
 
 namespace MicroservicesRabbitmq.Infra.Bus
 {
-    internal sealed class RabbitMqBus : IEventBus
+    public sealed class RabbitMqBus : IEventBus
     {
         private readonly IMediator _mediator;
         private Dictionary<string, HashSet<Type>> _handler;
