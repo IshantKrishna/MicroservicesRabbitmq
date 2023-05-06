@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using System.Text;
 using MediatR;
 using MicroservicesRabbitmq.Domain.Core.Bus;
 using MicroservicesRabbitmq.Domain.Core.Commands;
@@ -11,7 +6,6 @@ using MicroservicesRabbitmq.Domain.Core.Events;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using JsonConverter = Newtonsoft.Json.JsonConverter;
 
 namespace MicroservicesRabbitmq.Infra.Bus
 {
@@ -42,7 +36,6 @@ namespace MicroservicesRabbitmq.Infra.Bus
             channel.QueueDeclare(eventName, false, false, false, null);
             var message = JsonConvert.SerializeObject(@event);
             var body = Encoding.UTF8.GetBytes(message);
-
             channel.BasicPublish("", eventName, null, body);
         }
 
