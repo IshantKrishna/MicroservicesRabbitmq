@@ -12,7 +12,7 @@ namespace MicroservicesRabbitmq.Infra.Bus
     public sealed class RabbitMqBus : IEventBus
     {
         private readonly IMediator _mediator;
-        private Dictionary<string, HashSet<Type>> _handler;
+        private readonly Dictionary<string, HashSet<Type>> _handler;
         private readonly List<Type> _eventTypes;
 
         public RabbitMqBus(IMediator mediator)
